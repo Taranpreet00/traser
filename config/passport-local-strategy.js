@@ -20,13 +20,13 @@ passport.use(new LocalStrategy({
                 return done(null, false);
             }
             return done(null, user);
-        })
+        });
     }
 ));
 
 //serializing the user to decide which key is to be kept in the cookies
 passport.serializeUser(function(user, done){
-    done(user, user.id);
+    done(null, user.id);
 });
 
 //deserializing the user from the key in the cookies
@@ -39,6 +39,31 @@ passport.deserializeUser(function(id, done){
         return done(null, user);
     });
 });
+
+//check if the user is authenticated
+passport.checkAuthentication = function(req, res, next){
+    //if the user is signed in, pass the request to next function(controller's action)
+    if(req.isAuthenticated()){
+        return next();
+    }
+    //if User is not signed in
+    return res.redirect('/users/signin')
+}
+
+passport.ifuserAuthenticated = function(req, res, next){
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
+    next();
+}
+
+passport.setAuthenticatedUser = function(req, res, next){
+    if(req.isAuthenticated()){
+        //req.user contains the cuurent signed in user from the session cookie and we are sending this to the locals for the views
+        res.locals.user = req.user;
+    }
+    next();
+}
 
 
 module.exports = passport;
