@@ -1,0 +1,35 @@
+header{
+    width: 100%;
+    background-color: blue;
+    color: white;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 10px 0 10px;
+    box-sizing: border-box;
+    font-size: 1.5rem;
+
+    h3{
+        margin: 5px;
+    }
+
+    ul{
+        display: flex;
+        list-style-type: none;
+        margin: 5px;
+
+        li{
+            margin-left: 10px;
+
+
+            a{
+                text-decoration: none;
+                color: white;
+            }
+            a:hover{
+                color: skyblue;
+            }
+        }
+    }
+}

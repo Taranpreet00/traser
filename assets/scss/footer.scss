@@ -1,0 +1,22 @@
+footer{
+    display: flex;
+    color: white;
+    background-color: gray;
+    font-family: sans-serif;
+    h3{
+        margin-left: 5px;
+    }
+    #links{
+        display: flex;
+        flex-direction: column;
+        font-size: 1.2rem;
+        margin: 1rem;
+        a{
+            text-decoration: none;
+            color: white;
+        }
+        a:hover{
+            color: lightgrey;
+        }
+    }
+}
