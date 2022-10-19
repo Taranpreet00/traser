@@ -1,7 +1,7 @@
 const Post = require('../models/post');
 
 module.exports.create = function(req, res){
-    if(req.isAuthenticated()){
+    // if(req.isAuthenticated()){
         const curruser = req.user._id;
         Post.create({
             content: req.body.content,
@@ -11,10 +11,10 @@ module.exports.create = function(req, res){
                 console.log('Error in creating new post');
                 return;
             }
-            return res.redirect('/users/profile');
+            return res.redirect('/');
         });
-    }
-    else{
-        return res.redirect('/users/signin');
-    }
+    // }
+    // else{
+    //     return res.redirect('/users/signin');
+    // }
 }
