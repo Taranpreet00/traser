@@ -1,21 +1,30 @@
-<h1>Traser / <%= title %></h1>
+<link rel="stylesheet" type="text/css" href="/css/home.css">
 
-<section id="feed-posts">
-    <h4>Posts</h4>
-    <% if(locals.user){%>
-    <form action="/posts/create" id="new-post-form" method="post">
-        <textarea name="content" cols="30" rows="3" placeholder="Type here..."  required></textarea>
-        <button type="submit">Post</button>
-    </form>
-    <%} %>
-
-    <div id="posts-list-container">
-        <ul>
-            <% for(post of posts){%>
-                <%- include('_post.ejs'); %>
-            <%}%>
-        </ul>
-    </div>
-
+<div id="home-container">
+    <section id="feed-posts">
+        <h4>Posts</h4>
+        <% if(locals.user){%>
+            <form action="/posts/create" id="new-post-form" method="post">
+                <textarea name="content" cols="30" rows="3" placeholder="Type here..."  required></textarea>
+                <button type="submit">Post</button>
+            </form>
+        <%} %>
+        
+        <div id="posts-list-container">
+            <ul>
+                <% for(post of posts){%>
+                    <%- include('_post.ejs'); %>
+                <%}%>
+            </ul>
+        </div>
+    </section>
     
-</section>
+    <section id="user-friends">
+        <h4>Friends</h4>
+        <% for(u of all_users){%>
+            <p>
+                <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
+            </p>
+        <%}%>
+    </section>
+</div>

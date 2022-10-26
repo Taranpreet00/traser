@@ -2,6 +2,8 @@
     <h3>₸ Taranpreet Singh. All Rights Reserved</h3>
     <div id="links">
         <a href="/">Home</a>
-        <a href="/users/profile">Profile</a>
+        <% if(locals.user) {%>
+            <a href="/users/profile/<%= locals.user.id %>">Profile</a>
+        <% } %>
     </div>
 </footer>

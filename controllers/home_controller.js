@@ -21,9 +21,12 @@ module.exports.home = function(req, res){
     })
     .exec(function(err, posts){
         if(err){console.log(err); return;}
-        return res.render('home', {
-            title: "Home",
-            posts: posts
+        User.find({}, function(err ,user){
+            return res.render('home', {
+                title: "Home",
+                posts: posts,
+                all_users: user
+            })
         })
     })
     
