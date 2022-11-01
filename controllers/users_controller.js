@@ -42,8 +42,8 @@ module.exports.signin = function(req, res){
 }
 
 module.exports.createSession = function(req, res){
-    let id = req.user.id;
-    return res.redirect('/users/profile/'+id);
+    req.flash('success', 'Logged in Successfully');
+    return res.redirect('/');
 }
 
 module.exports.create = function(req, res){
@@ -69,6 +69,7 @@ module.exports.create = function(req, res){
 module.exports.destroySession = function(req, res){
     req.logout(function(err){
         if(err) {return next(err);}
+        req.flash('success', 'Logged Out Successfully');
         res.redirect('/');
     });
 }
