@@ -8,3 +8,33 @@
     padding: 10px;
     border-left: 1px solid lightgrey;
     height: 100%; }
+  #home-container #feed-posts {
+    border-radius: 10px;
+    margin: 10px;
+    background-color: antiquewhite; }
+    #home-container #feed-posts #post-heading {
+      color: white;
+      text-shadow: 1px 1px 4px black;
+      margin: 5px 40% 15px;
+      font-size: 1.8rem; }
+  #home-container #posts-list-container > ul {
+    list-style: none;
+    padding: 0; }
+    #home-container #posts-list-container > ul > li {
+      border: 2px solid white;
+      border-radius: 10px;
+      margin: 10px;
+      padding: 10px; }
+  #home-container #posts-list-container .delete-post-button {
+    text-decoration: none; }
+    #home-container #posts-list-container .delete-post-button i {
+      color: red; }
+  #home-container #posts-list-container .delete-comments-button {
+    text-decoration: none; }
+    #home-container #posts-list-container .delete-comments-button i {
+      color: red; }
+  #home-container #posts-list-container .post-content {
+    font-size: 1.5rem;
+    font-weight: bold; }
+  #home-container #posts-list-container .post-comments .post-comments-list ul {
+    list-style: none; }

@@ -12,4 +12,54 @@
         border-left: 1px solid lightgrey;
         height: 100%;
     }
+
+    #feed-posts{
+        border-radius: 10px;
+        margin: 10px;
+        background-color: antiquewhite;
+
+        #post-heading{
+            color: white;
+            text-shadow: 1px 1px 4px black;
+            margin: 5px 40% 15px;
+            font-size: 1.8rem;
+        }
+    }
+
+    #posts-list-container{
+        >ul{
+            list-style: none;
+            padding: 0;
+            >li{
+                border: 2px solid white;
+                border-radius: 10px;
+                margin: 10px;
+                padding: 10px;
+            }
+        }
+        .delete-post-button{
+            text-decoration: none;
+            i{
+                color: red;
+            }
+        }
+        .delete-comments-button{
+            text-decoration: none;
+            i{
+                color: red;
+            }
+        }
+        .post-content{
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .post-comments{
+            .post-comments-list{
+                ul{
+                    list-style: none;
+                }
+            }
+        }
+    }
+
 }

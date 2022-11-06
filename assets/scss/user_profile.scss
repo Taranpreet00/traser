@@ -1,3 +1,44 @@
 body{
-    background-color: lightblue;
+    background-color: antiquewhite;
+    
+    
+    
+    #user-details{
+        margin: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        #avatar{
+            height: 20rem;
+            width: auto;
+            border-radius: 50%;
+        }
+
+        p{
+            font-size: 2rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        form{
+            display: flex;
+            flex-direction: column;
+            input{
+                font-size: large;
+                height: 40px;
+                margin: 10px;
+                background-color: transparent;
+                border: 5px solid white;
+            }
+
+            #button{
+                background-color:rgb(237, 199, 148);
+            }
+
+            #button:hover{
+                background-color:rgb(239, 168, 75);
+            }
+        }
+    }
 }

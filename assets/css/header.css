@@ -1,6 +1,6 @@
 header {
   width: 100%;
-  background-color: blue;
+  background-color: #88d9e6fd;
   color: white;
   font-family: sans-serif;
   display: flex;
@@ -8,17 +8,27 @@ header {
   justify-content: space-between;
   padding: 0 10px 0 10px;
   box-sizing: border-box;
-  font-size: 1.5rem; }
-  header h3 {
+  font-size: 1.5rem;
+  position: sticky;
+  top: 0; }
+  header #site-name {
     margin: 5px; }
+    header #site-name a {
+      text-decoration: none;
+      color: white; }
+    header #site-name #site-logo {
+      width: 2.2rem; }
+    header #site-name span {
+      margin-left: -11px; }
   header ul {
     display: flex;
     list-style-type: none;
-    margin: 5px; }
+    margin: 5px;
+    margin-top: 10px; }
     header ul li {
       margin-left: 10px; }
       header ul li a {
         text-decoration: none;
         color: white; }
       header ul li a:hover {
-        color: skyblue; }
+        color: #2f6175; }

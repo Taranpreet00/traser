@@ -1,2 +1,28 @@
 body {
-  background-color: lightblue; }
+  background-color: antiquewhite; }
+  body #user-details {
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    body #user-details #avatar {
+      height: 20rem;
+      width: auto;
+      border-radius: 50%; }
+    body #user-details p {
+      font-size: 2rem;
+      margin-top: 20px;
+      margin-bottom: 10px; }
+    body #user-details form {
+      display: flex;
+      flex-direction: column; }
+      body #user-details form input {
+        font-size: large;
+        height: 40px;
+        margin: 10px;
+        background-color: transparent;
+        border: 5px solid white; }
+      body #user-details form #button {
+        background-color: #edc794; }
+      body #user-details form #button:hover {
+        background-color: #efa84b; }

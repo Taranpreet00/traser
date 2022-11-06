@@ -37,9 +37,13 @@
         return $(`<li id="post-${ data.post._id }">
                     <p>
                         <small>
-                            <a class="delete-post-button" href="/posts/destroy/${ data.post._id }">X</a>
+                            <a class="delete-post-button" href="/posts/destroy/${ data.post._id }">
+                                <i class="fa-regular fa-circle-xmark"></i>
+                            </a>
                         </small>
-                        ${ data.post.content }
+                        <span class="post-content">
+                            ${ data.post.content }
+                        </span>
                         <br>
                         <small>
                             ${ data.user_name}

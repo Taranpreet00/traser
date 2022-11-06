@@ -38,7 +38,9 @@
         return $(`<li id="comment-${ data.comment._id }">
         <p>
             <small>
-                <a class="delete-comments-button" href="/comments/destroy/${ data.comment._id }">X</a>
+                <a class="delete-comments-button" href="/comments/destroy/${ data.comment._id }">
+                    <i class="fa-regular fa-circle-xmark"></i>
+                </a>
             </small>
             ${ data.comment.content }
             <br>
