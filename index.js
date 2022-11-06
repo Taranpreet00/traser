@@ -30,7 +30,8 @@ app.use(express.urlencoded());
 app.use(cookieParser());
 //set static files
 app.use(express.static('./assets'));
-
+//make the uploads path available to the browser
+app.use('/uploads', express.static(__dirname + '/uploads'));
 //set up layouts
 app.use(expressLoyouts);
 app.set('layout extractStyles', true);
