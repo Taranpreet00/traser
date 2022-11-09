@@ -3,11 +3,6 @@
   #home-container #feed-posts {
     width: 70%;
     padding: 10px; }
-  #home-container #user-friends {
-    width: 30%;
-    padding: 10px;
-    border-left: 1px solid lightgrey;
-    height: 100%; }
   #home-container #feed-posts {
     border-radius: 10px;
     margin: 10px;
@@ -38,3 +33,28 @@
     font-weight: bold; }
   #home-container #posts-list-container .post-comments .post-comments-list ul {
     list-style: none; }
+  #home-container #user-friends {
+    background-color: #edc794;
+    width: 30%;
+    padding: 10px;
+    height: 100%;
+    border-radius: 10px;
+    margin: 10px; }
+    #home-container #user-friends img {
+      width: 2rem;
+      height: 2rem;
+      vertical-align: bottom;
+      border-radius: 50%; }
+    #home-container #user-friends h4 {
+      color: white;
+      text-shadow: 1px 1px 4px black;
+      margin: 5px 40% 15px;
+      font-size: 1.8rem; }
+    #home-container #user-friends a {
+      text-decoration: none;
+      color: antiquewhite;
+      font-size: 1.3rem;
+      font-weight: bold;
+      text-shadow: 1px 1px 4px black; }
+    #home-container #user-friends a:hover {
+      text-decoration: underline; }

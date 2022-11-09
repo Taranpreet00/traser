@@ -23,6 +23,11 @@
         <h4>Friends</h4>
         <% for(u of all_users){%>
             <p>
+                <% if(u.avatar){ %>
+                    <img id="avatar" src="<%= u.avatar %>">
+                <% } else { %>
+                    <img id="avatar" src="/images/avatar.png">
+                <%}%>
                 <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
             </p>
         <%}%>

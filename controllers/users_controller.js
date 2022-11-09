@@ -28,6 +28,7 @@ module.exports.update = async function(req, res){
             User.uploadedAvatar(req, res, function(err){
                 if(err){console.log('***** Multer error : ', err);}
                 user.name = req.body.name;
+                // updating email error because the email could already exist, check required
                 user.email = req.body.email;
 
                 if(req.file){

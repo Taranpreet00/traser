@@ -6,12 +6,12 @@
         padding: 10px;
     }
 
-    #user-friends{
-        width: 30%;
-        padding: 10px;
-        border-left: 1px solid lightgrey;
-        height: 100%;
-    }
+    // #user-friends{
+    //     width: 30%;
+    //     padding: 10px;
+    //     border-left: 1px solid lightgrey;
+    //     height: 100%;
+    // }
 
     #feed-posts{
         border-radius: 10px;
@@ -62,4 +62,38 @@
         }
     }
 
+    #user-friends{
+        background-color: rgb(237, 199, 148);
+        width: 30%;
+        padding: 10px;
+        height: 100%;
+        border-radius: 10px;
+        margin: 10px;
+
+        img{
+            width: 2rem;
+            height: 2rem;
+            vertical-align: bottom;
+            border-radius: 50%;
+        }
+
+        h4{
+            color: white;
+            text-shadow: 1px 1px 4px black;
+            margin: 5px 40% 15px;
+            font-size: 1.8rem;
+        }
+
+        a{
+            text-decoration: none;
+            color: antiquewhite;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 4px black;
+        }
+
+        a:hover{
+            text-decoration: underline;
+        }
+    }
 }
