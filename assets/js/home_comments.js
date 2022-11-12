@@ -45,7 +45,7 @@
             ${ data.comment.content }
             <br>
             <small>
-                ${ data.user_name }
+                ${ data.comment.user.name }
             </small>
         </p>
     </li>`);
