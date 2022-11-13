@@ -4,6 +4,8 @@ const fs = require('fs');
 const path = require('path');
 const resetOTPMailer = require('../mailers/reset-mailer');
 const crypto = require('crypto');
+const TempUser = require('../models/temp_user');
+const verifyMailer = require('../mailers/verify_user_mailer');
 
 module.exports.profile = function(req, res){
     User.findById(req.params.id, function(err, user){
@@ -32,7 +34,7 @@ module.exports.update = async function(req, res){
                 if(err){console.log('***** Multer error : ', err);}
                 user.name = req.body.name;
                 // updating email error because the email could already exist, check required
-                user.email = req.body.email;
+                // user.email = req.body.email;
 
                 if(req.file){
                     if(user.avatar && fs.existsSync(path.join(__dirname, '..', user.avatar))){
@@ -82,24 +84,62 @@ module.exports.createSession = function(req, res){
     return res.redirect('/');
 }
 
-module.exports.create = function(req, res){
+module.exports.create = async function(req, res){
     
     if(req.body.password != req.body.confirm_password)
         return res.redirect('back');
-    User.findOne({email: req.body.email}, function(err, user){
-        if(err) {console.log('error in finding user in signing up'); return}
+    let user = await User.findOne({email: req.body.email});
+        // if(err) {console.log('error in finding user in signing up'); return}
+    if(!user){
+        // User.create(req.body, function(err, user){
+        //     if(err) {console.log('error in creating user while signing up'); return}
 
-        if(!user){
-            User.create(req.body, function(err, user){
-                if(err) {console.log('error in creating user while signing up'); return}
+        //     return res.redirect('/users/signin')
+        // });
+        let verifyToken = crypto.randomBytes(8).toString('hex');
+        let newTempUser = await TempUser.create({
+            email: req.body.email,
+            password: req.body.password,
+            name: req.body.name,
+            token: verifyToken
+        });
+        verifyMailer.verifymail(newTempUser);
+        setTimeout(() => {
+            newTempUser.remove();
+        }, 300000);
+        return res.redirect('/users/verify_page');
+    }
+    else{
+        req.flash('error', 'User already exist');
+        return res.redirect('back');
+    }
+}
 
-                return res.redirect('/users/signin')
-            })
-        }
-        else{
-            return res.redirect('back');
-        }
+exports.verifyPage = (req, res) => {
+    if(req.isAuthenticated()){
+        let id = req.user.id;
+        console.log('request is authenticated')
+        return res.redirect('/users/profile/'+id);
+    }
+    return res.render('verify_user', {
+        title: "Verify User"
     });
+}
+
+exports.verify = async (req, res) => {
+    let NewUser = await TempUser.findOne({token: req.body.token});
+    if(!NewUser){
+        req.flash('error', 'Invalid OTP');
+        return res.redirect('/users/signup');
+    }
+    await User.create({
+        email: NewUser.email,
+        password: NewUser.password,
+        name: NewUser.name
+    });
+    NewUser.remove();
+    req.flash('success', 'Account Created Successfully');
+    return res.redirect('/users/signin');
 }
 
 module.exports.destroySession = function(req, res){
@@ -136,6 +176,9 @@ exports.createToken = async (req, res) => {
             isValid: true
         });
         newtoken = await newtoken.populate('user', 'name email');
+        setTimeout(function(){
+            newtoken.remove();
+        }, 300000);
         resetOTPMailer.resetToken(newtoken);
         req.flash('success', 'Otp Sent to your mail Successfully');
         return res.redirect('/users/reset_password_page');

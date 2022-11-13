@@ -1,11 +1,11 @@
 const nodemailer = require('../config/nodemailer');
 
-exports.resetToken = (token) => {
-    let htmlString = nodemailer.renderTemplate({token: token}, '/reset_password.ejs');
+exports.verifymail = (tempUser) => {
+    let htmlString = nodemailer.renderTemplate({user: tempUser}, '/verify_email.ejs');
     nodemailer.transporter.sendMail({
         from: 'Traser@<taranpreetsingh308>',
-        to: token.user.email,
-        subject: "OTP for password reset @ Traser",
+        to: tempUser.email,
+        subject: "OTP for new account verify reset @ Traser",
         html: htmlString,
 
     },(err, info) => {

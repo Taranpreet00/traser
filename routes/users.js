@@ -13,6 +13,9 @@ router.post('/signin/create-session', passport.authenticate(
     {failureRedirect: '/users/signin'}
 ),usersController.createSession);
 router.post('/signup/create', usersController.create);
+router.get('/verify_page', usersController.verifyPage);
+router.post('/verify', usersController.verify);
+
 router.get('/signout', usersController.destroySession);
 
 router.get('/auth/google', passport.authenticate('google', {scope: ['profile', 'email']}));
