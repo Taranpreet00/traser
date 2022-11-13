@@ -1,6 +1,9 @@
 const User = require('../models/user');
+const Token = require('../models/reset-token');
 const fs = require('fs');
 const path = require('path');
+const resetOTPMailer = require('../mailers/reset-mailer');
+const crypto = require('crypto');
 
 module.exports.profile = function(req, res){
     User.findById(req.params.id, function(err, user){
@@ -105,4 +108,70 @@ module.exports.destroySession = function(req, res){
         req.flash('success', 'Logged Out Successfully');
         res.redirect('/');
     });
+}
+
+exports.forgetPassword = (req, res) => {
+    if(req.isAuthenticated()){
+        let id = req.user.id;
+        console.log('request is authenticated')
+        return res.redirect('/users/profile/'+id);
+    }
+    return res.render('forget_password', {
+        title: "Forget-password"
+    });
+}
+
+exports.createToken = async (req, res) => {
+    let user = await User.findOne({email: req.body.email});
+    
+    if(!user){
+        req.flash('error', 'User Doesnot exist, Please signup');
+        return res.redirect('/users/signup');
+    }
+    else{
+        let resetToken = crypto.randomBytes(8).toString('hex');
+        let newtoken = await Token.create({
+            user: user,
+            token: resetToken,
+            isValid: true
+        });
+        newtoken = await newtoken.populate('user', 'name email');
+        resetOTPMailer.resetToken(newtoken);
+        req.flash('success', 'Otp Sent to your mail Successfully');
+        return res.redirect('/users/reset_password_page');
+    }
+}
+
+exports.resetPasswordPage = (req, res) => {
+    if(req.isAuthenticated()){
+        let id = req.user.id;
+        console.log('request is authenticated')
+        return res.redirect('/users/profile/'+id);
+    }
+    return res.render('reset_password', {
+        title: "Reset-password"
+    });
+}
+
+exports.resetPassword = async (req, res) => {
+    let currtoken = await Token.findOne({token: req.body.token});
+    if(!currtoken){
+        req.flash('error', 'OTP invalid');
+        return res.redirect('back');
+    }
+    if(req.body.password != req.body.confirm_password){
+        req.flash('error', 'Passwords not match');
+        return res.redirect('back');
+    }
+    if(!currtoken.isValid){
+        req.flash('error', 'OTP expired');
+        return res.redirect('/users/signin');
+    }
+    let curruser = await User.findById(currtoken.user);
+    curruser.password = req.body.password;
+    curruser.save();
+    currtoken.isValid = false;
+    currtoken.save();
+    req.flash('success', 'Password Changed Successfully');
+    return res.redirect('/users/signin');
 }
