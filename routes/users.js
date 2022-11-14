@@ -29,4 +29,6 @@ router.post('/reset_password', usersController.resetPassword);
 //Update User Profile
 router.get('/user_profile_update', passport.checkAuthentication ,usersController.updateProfilePage);
 router.post('/update_profile/:id', passport.checkAuthentication, usersController.updateProfile);
+router.get('/user_password_update', passport.checkAuthentication, usersController.updatePasswordPage);
+router.post('/update_password', passport.checkAuthentication, usersController.updatePassword);
 module.exports = router;

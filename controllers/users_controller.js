@@ -52,6 +52,33 @@ module.exports.updateProfile = async function(req, res){
     }
 }
 
+module.exports.updatePasswordPage = function(req, res){
+    return res.render('user_password_update', {
+        title: "Password Update",
+    });
+}
+
+module.exports.updatePassword = function(req, res){
+    if(req.body.current_password != req.user.password){
+        req.flash('error', 'Wrong Password');
+        return res.redirect('back');
+    }
+    if(req.body.new_password != req.body.confirm_password){
+        req.flash('error', 'Passwords donot match');
+        return res.redirect('back');
+    }
+    User.findById(req.user._id, function(err, user){
+        if(err){
+            console.log('Error in fetching user ', err);
+            return res.redirect('back');
+        }
+        user.password = req.body.new_password;
+        user.save();
+        req.flash('success', 'Password Changed Successfully');
+        res.redirect('/');
+    });
+}
+
 module.exports.signup = function(req, res){
     if(req.isAuthenticated()){
         let id = req.user.id;
