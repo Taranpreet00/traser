@@ -4,7 +4,6 @@ const passport = require('passport');
 
 const usersController = require('../controllers/users_controller');
 router.get('/profile/:id',passport.checkAuthentication ,usersController.profile);
-router.post('/update/:id', passport.checkAuthentication, usersController.update);
 router.get('/signup', usersController.signup);
 router.get('/signin', usersController.signin);
 //use passport as a middleware to authenticate
@@ -27,4 +26,7 @@ router.post('/create-token', usersController.createToken);
 router.get('/reset_password_page', usersController.resetPasswordPage);
 router.post('/reset_password', usersController.resetPassword);
 
+//Update User Profile
+router.get('/user_profile_update', passport.checkAuthentication ,usersController.updateProfilePage);
+router.post('/update_profile/:id', passport.checkAuthentication, usersController.updateProfile);
 module.exports = router;

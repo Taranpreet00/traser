@@ -16,25 +16,19 @@ module.exports.profile = function(req, res){
     });
 }
 
-module.exports.update = async function(req, res){
-    // if(req.user.id == req.params.id){
-    //     User.findByIdAndUpdate(req.params.id, req.body, function(err, user){
-    //         req.flash('success', 'Updated!');
-    //         return res.redirect('back');
-    //     })
-    // }
-    // else{
-    //     req.flash('error', 'UnAuthorized')
-    //     return res.status(401).send('Unauthorized');
-    // }
+module.exports.updateProfilePage = function(req, res){
+    return res.render('user_profile_update', {
+        title: "Profile Update",
+    });
+}
+
+module.exports.updateProfile = async function(req, res){
     if(req.user.id == req.params.id){
         try{
             let user = await User.findById(req.params.id);
             User.uploadedAvatar(req, res, function(err){
                 if(err){console.log('***** Multer error : ', err);}
                 user.name = req.body.name;
-                // updating email error because the email could already exist, check required
-                // user.email = req.body.email;
 
                 if(req.file){
                     if(user.avatar && fs.existsSync(path.join(__dirname, '..', user.avatar))){
@@ -44,7 +38,7 @@ module.exports.update = async function(req, res){
                     user.avatar = User.avatarPath + '/' + req.file.filename;
                 }
                 user.save();
-                return res.redirect('back');
+                return res.redirect('/users/profile/'+req.params.id);
             });
         }
         catch(error){
@@ -88,30 +82,31 @@ module.exports.create = async function(req, res){
     
     if(req.body.password != req.body.confirm_password)
         return res.redirect('back');
-    let user = await User.findOne({email: req.body.email});
-        // if(err) {console.log('error in finding user in signing up'); return}
-    if(!user){
-        // User.create(req.body, function(err, user){
-        //     if(err) {console.log('error in creating user while signing up'); return}
+    try{
+        let user = await User.findOne({email: req.body.email});
 
-        //     return res.redirect('/users/signin')
-        // });
-        let verifyToken = crypto.randomBytes(8).toString('hex');
-        let newTempUser = await TempUser.create({
-            email: req.body.email,
-            password: req.body.password,
-            name: req.body.name,
-            token: verifyToken
-        });
-        verifyMailer.verifymail(newTempUser);
-        setTimeout(() => {
-            newTempUser.remove();
-        }, 300000);
-        return res.redirect('/users/verify_page');
+        if(!user){
+            let verifyToken = crypto.randomBytes(8).toString('hex');
+            let newTempUser = await TempUser.create({
+                email: req.body.email,
+                password: req.body.password,
+                name: req.body.name,
+                token: verifyToken
+            });
+            verifyMailer.verifymail(newTempUser);
+            setTimeout(() => {
+                newTempUser.remove();
+            }, 300000);
+            return res.redirect('/users/verify_page');
+        }
+        else{
+            req.flash('error', 'User already exist');
+            return res.redirect('back');
+        }
     }
-    else{
-        req.flash('error', 'User already exist');
-        return res.redirect('back');
+    catch(error){
+        req.flash('error', err);
+        return req.redirect('back');
     }
 }
 
@@ -127,19 +122,25 @@ exports.verifyPage = (req, res) => {
 }
 
 exports.verify = async (req, res) => {
-    let NewUser = await TempUser.findOne({token: req.body.token});
-    if(!NewUser){
-        req.flash('error', 'Invalid OTP');
-        return res.redirect('/users/signup');
+    try{
+        let NewUser = await TempUser.findOne({token: req.body.token});
+        if(!NewUser){
+            req.flash('error', 'Invalid OTP');
+            return res.redirect('/users/signup');
+        }
+        await User.create({
+            email: NewUser.email,
+            password: NewUser.password,
+            name: NewUser.name
+        });
+        NewUser.remove();
+        req.flash('success', 'Account Created Successfully');
+        return res.redirect('/users/signin');
     }
-    await User.create({
-        email: NewUser.email,
-        password: NewUser.password,
-        name: NewUser.name
-    });
-    NewUser.remove();
-    req.flash('success', 'Account Created Successfully');
-    return res.redirect('/users/signin');
+    catch(error){
+        req.flash('error', err);
+        return req.redirect('back');
+    }
 }
 
 module.exports.destroySession = function(req, res){

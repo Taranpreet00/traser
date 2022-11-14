@@ -22,6 +22,10 @@ body{
         border-radius: 10px;
         background-color: rgb(237, 199, 148);
 
+        label{
+            font-size: 1.5rem;
+        }
+
         input{
             max-width: 80%;
             font-size: 1.5rem;
@@ -35,6 +39,7 @@ body{
             height: 50px;
             width: 30%;
             border-radius: 15px;
+            margin-bottom: 10px;
         }
 
         button:hover{

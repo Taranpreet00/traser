@@ -1,0 +1,9 @@
+<link rel="stylesheet" href="/css/signin.css">
+
+<form action="/users/update_profile/<%= locals.user.id %>" enctype="multipart/form-data" method="post">
+    <label for="name">Name: </label>
+    <input type="text" id="name" name="name" placeholder="Your Name" value="<%= locals.user.name %>">
+    <label for="avatar">Profile Picture: </label>
+    <input type="file" id="avatar" name="avatar" placeholder="Profile Picture">
+    <button type="submit">Update</button>
+</form>

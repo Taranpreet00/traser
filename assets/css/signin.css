@@ -15,6 +15,8 @@ body {
     border: 5px solid white;
     border-radius: 10px;
     background-color: #edc794; }
+    body form label {
+      font-size: 1.5rem; }
     body form input {
       max-width: 80%;
       font-size: 1.5rem;
@@ -25,7 +27,8 @@ body {
       font-size: 1.2rem;
       height: 50px;
       width: 30%;
-      border-radius: 15px; }
+      border-radius: 15px;
+      margin-bottom: 10px; }
     body form button:hover {
       background-color: #efa84b; }
     body form a {
