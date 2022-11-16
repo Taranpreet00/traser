@@ -62,6 +62,11 @@
         }
     }
 
+    .toggle-like{
+        text-decoration: none;
+        color: black;
+    }
+
     #user-friends{
         background-color: rgb(237, 199, 148);
         width: 30%;
@@ -96,4 +101,8 @@
             text-decoration: underline;
         }
     }
+}
+
+.like{
+    color: red;
 }

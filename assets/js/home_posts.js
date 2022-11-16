@@ -23,6 +23,7 @@
                     let newPost = NewPostDom(data.data);
                     $('#posts-list-container>ul').prepend(newPost);
                     deletePost1($('.delete-post-button', newPost));
+                    new ToggleLike($('.toggle-like', newPost));
                     flashMessage(data.message);
                 },
                 error: function(error){
@@ -47,6 +48,12 @@
                         <br>
                         <small>
                             ${ data.user_name}
+                            <a href="/like/post/${ data.post._id }" class="toggle-like">
+                                <i class="fa-solid fa-heart"></i>
+                                <small>
+                                    0
+                                </small>
+                            </a>
                         </small>
                     </p>
                     <div class="post-comments">

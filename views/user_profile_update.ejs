@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="/css/signin.css">
 
 <form action="/users/update_profile/<%= locals.user.id %>" enctype="multipart/form-data" method="post">
+    <h1>Update Profile</h1>
     <label for="name">Name: </label>
     <input type="text" id="name" name="name" placeholder="Your Name" value="<%= locals.user.name %>">
     <label for="avatar">Profile Picture: </label>

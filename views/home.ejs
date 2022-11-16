@@ -35,4 +35,11 @@
 </div>
 <script src="/js/home_posts.js"></script>
 <script src="/js/home_comments.js"></script>
+<script src="/js/home_likes_toggle.js"></script>
+<script>
+    $('.toggle-like').each(function(){
+        let self = this;
+        let toggleLike = new ToggleLike(self);
+    });
+</script>
 <script src="https://kit.fontawesome.com/00f7b763b3.js" crossorigin="anonymous"></script>

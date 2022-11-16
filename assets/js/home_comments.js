@@ -24,6 +24,7 @@
                     let newComment = newCommentDom(data.data);
                     $(`#post-comments-${data.data.comment.post}`).append(newComment);
                     deleteComment1($('.delete-comments-button', newComment));
+                    new ToggleLike($('.toggle-like', newComment)); 
                     flashMessage(data.message);
                 },
                 error: function(error){
@@ -46,6 +47,12 @@
             <br>
             <small>
                 ${ data.comment.user.name }
+                <a href="/like/comment/${ data.comment._id }" class="toggle-like">
+                <i class="fa-solid fa-heart"></i>
+                <small>
+                    0
+                </small>
+            </a>
             </small>
         </p>
     </li>`);

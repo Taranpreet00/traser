@@ -11,6 +11,27 @@
         <br>
         <small>
             <%= comment.user.name %>
+            <% if(locals.user){ %>
+            <a href="/like/comment/<%= comment.id %>" class="toggle-like">
+                <% let liked = false %>
+                <% for(like of comment.likes){%>
+                    <% if(like.user.toString() == locals.user.id) {%>
+                        <% liked = true; %>
+                        <% break %>
+                    <%}%>
+                <%}%><% if(liked) {%>
+                    <i class="like fa-solid fa-heart"></i>
+                <%} else {%>
+                    <i class="fa-solid fa-heart"></i>
+                <%}%>
+                <small>
+                    <%= comment.likes.length %>
+                </small>
+            </a>
+            <%} else {%>
+                <i class="fa-solid fa-heart"></i>
+                <%= post.likes.length %>
+            <%}%>
         </small>
     </p>
 </li>
