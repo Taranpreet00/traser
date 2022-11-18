@@ -20,17 +20,39 @@
     </section>
     
     <section id="user-friends">
-        <h4>Friends</h4>
-        <% for(u of all_users){%>
-            <p>
-                <% if(u.avatar){ %>
-                    <img id="avatar" src="<%= u.avatar %>">
-                <% } else { %>
-                    <img id="avatar" src="/images/avatar.png">
-                <%}%>
-                <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
-            </p>
+        <% if(!locals.user) {%>
+            <h4>Users</h4>
+            <% for(u of all_users){%>
+                <p>
+                    <% if(u.avatar){ %>
+                        <img id="avatar" src="<%= u.avatar %>">
+                    <% } else { %>
+                        <img id="avatar" src="/images/avatar.png">
+                    <%}%>
+                    <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
+                </p>
+            <%}%>
+        <%} else {%>
+            <h4>Friends</h4>
+            <a id="requests-button" href="/requests/fetch">Requests</a>
+            <% for(friendship of user.friendships){%>
+                <p>
+                    <% let u %>
+                    <% if(friendship.from_user.id == locals.user.id){ %>
+                        <% u = friendship.to_user %> 
+                    <% } else {%>
+                        <% u = friendship.from_user %>
+                    <% } %>
+                    <% if(u.avatar){ %>
+                        <img id="avatar" src="<%= u.avatar %>">
+                    <% } else { %>
+                        <img id="avatar" src="/images/avatar.png">
+                    <%}%>
+                    <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
+                </p>
+            <%}%>
         <%}%>
+        
     </section>
 </div>
 <script src="/js/home_posts.js"></script>

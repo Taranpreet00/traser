@@ -23,6 +23,20 @@ module.exports.home = async function(req, res){
         });
 
         let users = await User.find();
+        
+        if(req.isAuthenticated()){
+            const user = await User.findById(req.user.id)
+            .populate({
+                path: 'friendships',
+                populate: 'from_user to_user'
+            });
+            return res.render('home', {
+                title: "Home",
+                posts: posts,
+                all_users: users,
+                user: user
+            });
+        }
 
         return res.render('home', {
             title: "Home",
@@ -34,7 +48,4 @@ module.exports.home = async function(req, res){
         console.log('Error', err);
         return;
     }
-
-    
-    
 }

@@ -1,0 +1,38 @@
+<link rel="stylesheet" type="text/css" href="/css/requests.css">
+<div id="page-body">
+    <div id="requests">
+        <h4>Requests</h4>
+        <ul>
+            <% for(let request of user.friend_requests){%>
+                <li>
+                    <a class="delete-request-button" href="/requests/destroy/<%= request.id %>">
+                        <i class="fa-regular fa-circle-xmark"></i>
+                    </a>
+                    <% if(request.from_user.avatar){ %>
+                        <img id="avatar" src="<%= request.from_user.avatar %>">
+                    <% } else { %>
+                        <img id="avatar" src="/images/avatar.png">
+                    <%}%>
+                    <a class="request-user-id" href="/users/profile/<%= request.from_user.id%>"><%= request.from_user.name %></a>
+                    <a href="/requests/confirm-request/<%= request.id %>" class="confirm-button">Confirm</a>
+                </li>
+            <%}%>
+        </ul>
+    </div>
+    
+    <div id="all-users">
+        <h4>Users</h4>
+            <% for(u of all_users){%>
+                <p>
+                    <% if(u.avatar){ %>
+                        <img id="avatar" src="<%= u.avatar %>">
+                    <% } else { %>
+                        <img id="avatar" src="/images/avatar.png">
+                    <%}%>
+                    <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
+                </p>
+            <%}%>
+    </div>
+    
+</div>
+<script src="https://kit.fontawesome.com/00f7b763b3.js" crossorigin="anonymous"></script>

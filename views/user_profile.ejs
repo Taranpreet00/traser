@@ -18,6 +18,16 @@
             <a href="/users/user_profile_update">Update Profile</a>
             <a href="/users/user_password_update">Change Password</a>
         </div>
+        <%} else {%>
+        <div id="update-buttons">
+            <% if(friends) {%>
+                <a href="/requests/remove-friend/<%= profile_user.id %>">Remove Friend</a>
+            <%} else if(request_sent) {%>
+                <a href="/requests/cancel-request/<%= profile_user.id %>">Cancel Request</a>
+            <%} else {%>
+                <a href="/requests/new_request/<%= profile_user.id %>">Add Friend</a>
+            <%}%>
+        </div>
         <%}%>
     </section>
 </div>

@@ -6,14 +6,49 @@ const resetOTPMailer = require('../mailers/reset-mailer');
 const crypto = require('crypto');
 const TempUser = require('../models/temp_user');
 const verifyMailer = require('../mailers/verify_user_mailer');
+const Friendship = require('../models/friendships');
+const Friendrequest = require('../models/friend_request');
 
-module.exports.profile = function(req, res){
-    User.findById(req.params.id, function(err, user){
+module.exports.profile = async function(req, res){
+    try{
+        const user = await User.findById(req.params.id);
+        if(req.params.id != req.user.id){
+            const user_friend = await Friendship.findOne({
+                $or: [
+                    {from_user: req.user, to_user: req.params.id}, 
+                    {to_user: req.user, from_user: req.params.id}
+                ] ,
+            });
+            const requests = await Friendrequest.findOne({
+                from_user: req.user,
+                to_user: req.params.id
+            });
+            let friends = false;
+            if(user_friend){
+                friends = true;
+            }
+            let request = false;
+            if(requests){
+                request = true;
+            }
+            return res.render('user_profile', {
+                title: "User Profile",
+                profile_user: user,
+                friends: friends,
+                request_sent: request
+            });
+        }
+        
         return res.render('user_profile', {
             title: "User Profile",
             profile_user: user
         });
-    });
+    }
+    catch(err){
+        console.log('Error ', err);
+        return res.redirect('back');
+    }
+    
 }
 
 module.exports.updateProfilePage = function(req, res){

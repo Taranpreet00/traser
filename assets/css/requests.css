@@ -1,0 +1,77 @@
+#page-body {
+  display: flex; }
+  #page-body #requests {
+    height: 90vh;
+    overflow-y: scroll;
+    width: 70%;
+    border-radius: 10px;
+    margin: 10px;
+    background-color: antiquewhite;
+    padding: 10px; }
+    #page-body #requests img {
+      width: 2rem;
+      height: 2rem;
+      vertical-align: bottom;
+      border-radius: 50%; }
+    #page-body #requests h4 {
+      color: white;
+      text-shadow: 1px 1px 4px black;
+      margin: 5px 40% 15px;
+      font-size: 1.8rem; }
+    #page-body #requests ul {
+      list-style-type: none; }
+      #page-body #requests ul > li {
+        width: 90%;
+        border: 2px solid white;
+        border-radius: 10px;
+        margin: 10px;
+        padding: 10px; }
+        #page-body #requests ul > li .request-user-id {
+          text-decoration: none;
+          color: white;
+          font-size: 1.3rem;
+          font-weight: bold;
+          text-shadow: 1px 1px 4px black; }
+        #page-body #requests ul > li .request-user-id:hover {
+          text-decoration: underline; }
+        #page-body #requests ul > li .confirm-button {
+          margin-left: 20px;
+          font-size: 1rem;
+          padding: 5px;
+          border: 5px solid white;
+          border-radius: 10px;
+          color: black;
+          text-decoration: none;
+          background-color: #edc794; }
+        #page-body #requests ul > li .confirm-button:hover {
+          background-color: #efa84b;
+          color: white; }
+        #page-body #requests ul > li .delete-request-button {
+          color: red;
+          text-decoration: none; }
+  #page-body #all-users {
+    height: 90vh;
+    overflow-y: scroll;
+    background-color: #edc794;
+    width: 30%;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px; }
+    #page-body #all-users img {
+      width: 2rem;
+      height: 2rem;
+      vertical-align: bottom;
+      border-radius: 50%; }
+    #page-body #all-users h4 {
+      color: white;
+      text-shadow: 1px 1px 4px black;
+      margin: 5px 40% 15px;
+      font-size: 1.8rem; }
+    #page-body #all-users a {
+      text-decoration: none;
+      color: antiquewhite;
+      font-size: 1.3rem;
+      font-weight: bold;
+      text-shadow: 1px 1px 4px black; }
+    #page-body #all-users a:hover {
+      text-decoration: underline; }
