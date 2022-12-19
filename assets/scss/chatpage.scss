@@ -1,0 +1,126 @@
+#page-body{
+    display: flex;
+
+    #friends-list{
+        height: 85vh;
+        overflow-y: auto;
+        background-color: rgb(237, 199, 148);
+        width: 30%;
+        padding: 10px;
+        border-radius: 10px;
+        margin: 10px;
+
+        img{
+            width: 2rem;
+            height: 2rem;
+            vertical-align: bottom;
+            border-radius: 50%;
+        }
+
+        h4{
+            color: white;
+            text-shadow: 1px 1px 4px black;
+            margin: 5px 40% 15px;
+            font-size: 1.8rem;
+        }
+
+        a{
+            text-decoration: none;
+            color: antiquewhite;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 4px black;
+        }
+
+        a:hover{
+            text-decoration: underline;
+        }
+    }
+
+    #chatarea{
+        border-radius: 10px;
+        border: 10px solid rgb(237, 199, 148);
+        height: 85vh;
+        width: 70%;
+        margin: 10px;
+
+        .other-message{
+            text-align: left;
+            padding: 5px;
+            
+            span{
+                border-radius: 10px;
+                display: inline-block;
+                padding: 15px;
+                background-color: rgba(255, 40, 40, 0.703);
+            }
+        }
+
+        .self-message{
+            text-align: right;
+            padding: 5px;
+            
+            span{
+                border-radius: 10px;
+                display: inline-block;
+                padding: 15px;
+                background-color: rgba(38, 197, 38, 0.735);
+            }
+        }
+
+        h1{
+            height: 5%;
+            text-align: center;
+            width: auto;
+            color: rgb(237, 199, 148);
+            font-size: 1.7rem;
+            margin: 5px;
+            text-shadow: 2px 2px 1px grey;
+        }
+
+        #chat-list{
+            list-style-type: none;
+            height: 82%;
+            width: auto;
+            margin: 10px;
+            overflow-y: auto;
+            font-size: 1.3rem;
+        }
+
+        #chat-list::-webkit-scrollbar{
+            display: none;
+        }
+
+        #messagebox-container{
+            margin: 1%;
+            height: 7%;
+            input{
+                height: 90%;
+                font-size: 1rem;
+                border: 2px solid rgb(237, 199, 148);
+                width: 80%;
+                border-radius: 10px;
+                margin: 0 10px;
+                padding: 0 5px;
+            }
+            #send-message-button{
+                height: 90%;
+                width: 50px;
+                border: none;
+                padding: 0;
+                background-color: white;
+                color: green;
+    
+                i{
+                    vertical-align: middle;
+                    font-size: 30px;
+                }
+            }
+            #send-message-button:hover{
+                background-color: green;
+                color: white;
+            }
+
+        }
+    }
+}

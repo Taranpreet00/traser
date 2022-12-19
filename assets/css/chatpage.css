@@ -1,0 +1,91 @@
+#page-body {
+  display: flex; }
+  #page-body #friends-list {
+    height: 85vh;
+    overflow-y: auto;
+    background-color: #edc794;
+    width: 30%;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px; }
+    #page-body #friends-list img {
+      width: 2rem;
+      height: 2rem;
+      vertical-align: bottom;
+      border-radius: 50%; }
+    #page-body #friends-list h4 {
+      color: white;
+      text-shadow: 1px 1px 4px black;
+      margin: 5px 40% 15px;
+      font-size: 1.8rem; }
+    #page-body #friends-list a {
+      text-decoration: none;
+      color: antiquewhite;
+      font-size: 1.3rem;
+      font-weight: bold;
+      text-shadow: 1px 1px 4px black; }
+    #page-body #friends-list a:hover {
+      text-decoration: underline; }
+  #page-body #chatarea {
+    border-radius: 10px;
+    border: 10px solid #edc794;
+    height: 85vh;
+    width: 70%;
+    margin: 10px; }
+    #page-body #chatarea .other-message {
+      text-align: left;
+      padding: 5px; }
+      #page-body #chatarea .other-message span {
+        border-radius: 10px;
+        display: inline-block;
+        padding: 15px;
+        background-color: rgba(255, 40, 40, 0.703); }
+    #page-body #chatarea .self-message {
+      text-align: right;
+      padding: 5px; }
+      #page-body #chatarea .self-message span {
+        border-radius: 10px;
+        display: inline-block;
+        padding: 15px;
+        background-color: rgba(38, 197, 38, 0.735); }
+    #page-body #chatarea h1 {
+      height: 5%;
+      text-align: center;
+      width: auto;
+      color: #edc794;
+      font-size: 1.7rem;
+      margin: 5px;
+      text-shadow: 2px 2px 1px grey; }
+    #page-body #chatarea #chat-list {
+      list-style-type: none;
+      height: 82%;
+      width: auto;
+      margin: 10px;
+      overflow-y: auto;
+      font-size: 1.3rem; }
+    #page-body #chatarea #chat-list::-webkit-scrollbar {
+      display: none; }
+    #page-body #chatarea #messagebox-container {
+      margin: 1%;
+      height: 7%; }
+      #page-body #chatarea #messagebox-container input {
+        height: 90%;
+        font-size: 1rem;
+        border: 2px solid #edc794;
+        width: 80%;
+        border-radius: 10px;
+        margin: 0 10px;
+        padding: 0 5px; }
+      #page-body #chatarea #messagebox-container #send-message-button {
+        height: 90%;
+        width: 50px;
+        border: none;
+        padding: 0;
+        background-color: white;
+        color: green; }
+        #page-body #chatarea #messagebox-container #send-message-button i {
+          vertical-align: middle;
+          font-size: 30px; }
+      #page-body #chatarea #messagebox-container #send-message-button:hover {
+        background-color: green;
+        color: white; }

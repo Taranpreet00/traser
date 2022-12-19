@@ -101,6 +101,12 @@
         a:hover{
             text-decoration: underline;
         }
+
+        #usersection-link-buttons{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
     }
 }
 

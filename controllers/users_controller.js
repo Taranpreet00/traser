@@ -167,8 +167,8 @@ module.exports.create = async function(req, res){
         }
     }
     catch(error){
-        req.flash('error', err);
-        return req.redirect('back');
+        console.log('error', error);
+        return res.redirect('back');
     }
 }
 
