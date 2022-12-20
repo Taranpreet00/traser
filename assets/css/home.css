@@ -7,6 +7,24 @@
     border-radius: 10px;
     margin: 10px;
     background-color: antiquewhite; }
+    #home-container #feed-posts #post-picture-label {
+      text-align: center;
+      padding: 10px;
+      border: thin solid black;
+      background-color: white;
+      cursor: pointer;
+      height: 60px;
+      display: block;
+      margin: 5px 0;
+      width: 230px;
+      border-radius: 10px; }
+      #home-container #feed-posts #post-picture-label input {
+        display: none; }
+      #home-container #feed-posts #post-picture-label span {
+        display: inline-block;
+        overflow: hidden;
+        height: 20px;
+        color: green; }
     #home-container #feed-posts #post-heading {
       color: white;
       text-shadow: 1px 1px 4px black;
@@ -28,6 +46,12 @@
     text-decoration: none; }
     #home-container #posts-list-container .delete-comments-button i {
       color: red; }
+  #home-container #posts-list-container .post-picture {
+    max-height: 300px;
+    max-width: 500px;
+    border: 10px solid #edc794;
+    background-color: white;
+    display: block; }
   #home-container #posts-list-container .post-content {
     font-size: 1.5rem;
     font-weight: bold; }

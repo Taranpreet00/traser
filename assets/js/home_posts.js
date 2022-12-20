@@ -14,23 +14,25 @@
     let createPost = function(){
         let newPostForm = $('#new-post-form');
         newPostForm.submit(function(e){
-            e.preventDefault();
-            $.ajax({
-                type: 'post',
-                url: '/posts/create',
-                data: newPostForm.serialize(),
-                success: function(data){
-                    let newPost = NewPostDom(data.data);
-                    $('#posts-list-container>ul').prepend(newPost);
-                    deletePost1($('.delete-post-button', newPost));
-                    new ToggleLike($('.toggle-like', newPost));
-                    flashMessage(data.message);
-                },
-                error: function(error){
-                    console.log(error.responseText());
-                }
-            })
-        })
+            if($('#new-post-form input[type=file]')[0].files.length == 0){
+                e.preventDefault();
+                $.ajax({
+                    type: 'post',
+                    url: '/posts/create',
+                    data: newPostForm.serialize(),
+                    success: function(data){
+                        let newPost = NewPostDom(data.data);
+                        $('#posts-list-container>ul').prepend(newPost);
+                        deletePost1($('.delete-post-button', newPost));
+                        new ToggleLike($('.toggle-like', newPost));
+                        flashMessage(data.message);
+                    },
+                    error: function(error){
+                        console.log(error.responseText());
+                    }
+                });
+            }
+        });
     }
 
     //method to create a post in DOM
@@ -93,6 +95,10 @@
             deletePost(deleteLink);
         });
     }
+
+    $('#post-picture').on('change', function(e){
+        $('#picture-name').text(e.target.files[0].name);
+    });
 
     $('.delete-post-button').click(function(e){
         e.preventDefault();

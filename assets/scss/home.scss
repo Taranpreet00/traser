@@ -18,6 +18,30 @@
         margin: 10px;
         background-color: antiquewhite;
 
+        #post-picture-label{
+            text-align: center;
+            padding: 10px;
+            border: thin solid black;
+            background-color: white;
+            cursor: pointer;
+            height: 60px;
+            display: block;
+            margin: 5px 0;
+            width: 230px;
+            border-radius: 10px;
+
+            input{
+                display: none;
+            }
+
+            span{
+                display: inline-block;
+                overflow: hidden;
+                height: 20px;
+                color: green
+            }   
+        }
+
         #post-heading{
             color: white;
             text-shadow: 1px 1px 4px black;
@@ -48,6 +72,13 @@
             i{
                 color: red;
             }
+        }
+        .post-picture{
+            max-height: 300px;
+            max-width: 500px;
+            border: 10px solid #edc794;
+            background-color: white;
+            display: block;
         }
         .post-content{
             font-size: 1.5rem;

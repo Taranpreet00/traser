@@ -1,5 +1,8 @@
 <li id="post-<%= post._id %>">
     <p>
+        <% if(post.picture){ %>
+            <img class ="post-picture" src="<%= post.picture%>" alt="post-image"><br>
+        <% } %>
         <% if(locals.user && (locals.user.id == post.user.id)) {%>
             <small>
                 <a class="delete-post-button" href="/posts/destroy/<%= post.id %>">

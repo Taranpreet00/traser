@@ -5,7 +5,14 @@
     <section id="feed-posts">
         <h4 id="post-heading">Posts</h4>
         <% if(locals.user){%>
-            <form action="/posts/create" id="new-post-form" method="post">
+            <form action="/posts/create" id="new-post-form" enctype="multipart/form-data" method="post">
+                <label for="post-picture" id="post-picture-label">
+                    Select Image<br>
+                    <i class="fa-solid fa-camera"></i>
+                    <input type="file" id="post-picture" name="picture" placeholder="Picture Post"><br>
+                    <span id="picture-name"></span>
+                </label>
+                
                 <textarea name="content" cols="30" rows="3" placeholder="Type here..."  required></textarea>
                 <button type="submit">Post</button>
             </form>
