@@ -34,6 +34,10 @@ class UserBind{
                 $('#chat-list').scrollTop($('#chat-list')[0].scrollHeight);
             }
         });
+
+        this.socket.on('delete-message', function(data){
+            $(`#message-${data.messageid}`).remove();
+        })
     }
 
     displaychat(data){
@@ -52,10 +56,15 @@ class UserBind{
 
         for(let message of data.data.chat.messages){
             if(message.from_user == self.rec_user_id){
-                $('#chat-list').append(`<li class="other-message"><span>${message.content}</span></li>`);
+                $('#chat-list').append(`<li id="message-${message._id}" class="other-message"><span>
+                    ${message.content}
+                </span></li>`);
             }
             else{
-                $('#chat-list').append(`<li class="self-message"><span>${message.content}</span></li>`);
+                $('#chat-list').append(`<li id="message-${message._id}" class="self-message"><span>
+                    <i id="${message._id}" class="delete-message-button fa-regular fa-circle-xmark"></i>
+                    ${message.content}
+                </span></li>`);
             }
         }
         $('#chat-list').scrollTop($('#chat-list')[0].scrollHeight);
@@ -76,16 +85,49 @@ class UserBind{
                 });
             }
         });
+        $('.delete-message-button').click(function(e){
+            let messageId = $(e.target).attr('id');
+            $.ajax({
+                url: `/chat/delete_message/${messageId}`,
+                method: 'GET',
+                success: function(data){
+                    $(`#message-${messageId}`).remove();
+                    self.socket.emit('delete-message', {
+                        messageid: messageId,
+                        from_user: self.send_user_id,
+                        to_user: self.rec_user_id
+                    });
+                }
+            });
+        });
     }
 
     createMessage(data){
-        $('#chat-list').append(`<li class="self-message"><span>${data.message.content}</span></li>`)
+        $('#chat-list').append(`<li id="message-${data.message._id}" class="self-message"><span>
+        <i id="${data.message._id}" class="delete-message-button fa-regular fa-circle-xmark"></i>
+            ${data.message.content}
+        </span></li>`)
         $('#new_message').val('');
         $('#chat-list').scrollTop($('#chat-list')[0].scrollHeight);
         self.socket.emit('send-message', {
             from_user: self.send_user_id,
             to_user: self.rec_user_id,
             message: data.message.content
+        });
+        $(`#${data.message._id}`).click(function(e){
+            let messageId = $(e.target).attr('id');
+            $.ajax({
+                url: `/chat/delete_message/${messageId}`,
+                method: 'GET',
+                success: function(data){
+                    $(`#message-${messageId}`).remove();
+                    self.socket.emit('delete-message', {
+                        messageid: messageId,
+                        from_user: self.send_user_id,
+                        to_user: self.rec_user_id
+                    });
+                }
+            });
         });
     }
 }

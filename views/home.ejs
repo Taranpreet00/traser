@@ -1,8 +1,17 @@
 <link rel="stylesheet" type="text/css" href="/css/home.css">
 <link rel="stylesheet" type="text/css" href="/css/chatbox.css">
-
+<div id="navbar">
+    <ul>
+        <li>
+            <i id='home-show-button' class="fa-solid fa-house"></i>
+        </li>
+        <li>
+            <i id='friends-show-button' class="fa-solid fa-user-group"></i>
+        </li>
+    </ul>
+</div>
 <div id="home-container">
-    <section id="feed-posts">
+    <section id="feed-posts" class="feed-posts">
         <h4 id="post-heading">Posts</h4>
         <% if(locals.user){%>
             <form action="/posts/create" id="new-post-form" enctype="multipart/form-data" method="post">
@@ -27,7 +36,7 @@
         </div>
     </section>
     
-    <section id="user-friends">
+    <section id="user-friends" class="user-friends friends-hide">
         <% if(!locals.user) {%>
             <h4>Users</h4>
             <% for(u of all_users){%>
@@ -85,3 +94,4 @@
         new ChatEngine('user-chat-box', '<%= locals.user.email %>');
     </script>
 <%}%>
+<script src="/js/home.js"></script>

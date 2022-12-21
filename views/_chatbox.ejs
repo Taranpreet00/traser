@@ -1,5 +1,7 @@
 <% if(locals.user) {%>
-    <div id="user-chat-box">
+    <div id="chat-icon" class="chat-icon show-chat-icon"><i class="fa-solid fa-comments"></i></div>
+    <div id="user-chat-box" class="user-chat-box hide">
+        <i id='hide-chatbox-button' class="fa-regular fa-circle-xmark"></i>
         <ul id="chat-message-list"></ul>
 
         <div id="chat-message-input-container">

@@ -55,3 +55,13 @@ class ChatEngine{
         })
     }
 }
+
+$('#hide-chatbox-button').click(function(e){
+    $('#user-chat-box').addClass('hide');
+    $('#chat-icon').addClass('show-chat-icon');
+});
+
+$('#chat-icon').click(function(e){
+    $('#user-chat-box').removeClass('hide');
+    $('#chat-icon').removeClass('show-chat-icon');
+});

@@ -1,9 +1,6 @@
 #home-container {
   display: flex; }
   #home-container #feed-posts {
-    width: 70%;
-    padding: 10px; }
-  #home-container #feed-posts {
     border-radius: 10px;
     margin: 10px;
     background-color: antiquewhite; }
@@ -51,7 +48,8 @@
     max-width: 500px;
     border: 10px solid #edc794;
     background-color: white;
-    display: block; }
+    display: block;
+    max-width: 90%; }
   #home-container #posts-list-container .post-content {
     font-size: 1.5rem;
     font-weight: bold; }
@@ -60,36 +58,88 @@
   #home-container .toggle-like {
     text-decoration: none;
     color: black; }
-  #home-container #user-friends {
-    background-color: #edc794;
-    width: 30%;
-    padding: 10px;
-    min-height: 70vh;
-    height: 100%;
-    border-radius: 10px;
-    margin: 10px; }
-    #home-container #user-friends img {
-      width: 2rem;
-      height: 2rem;
-      vertical-align: bottom;
-      border-radius: 50%; }
-    #home-container #user-friends h4 {
-      color: white;
-      text-shadow: 1px 1px 4px black;
-      margin: 5px 40% 15px;
-      font-size: 1.8rem; }
-    #home-container #user-friends a {
-      text-decoration: none;
-      color: antiquewhite;
-      font-size: 1.3rem;
-      font-weight: bold;
-      text-shadow: 1px 1px 4px black; }
-    #home-container #user-friends a:hover {
-      text-decoration: underline; }
-    #home-container #user-friends #usersection-link-buttons {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between; }
+
+.user-friends {
+  background-color: #edc794;
+  width: 30%;
+  padding: 10px;
+  min-height: 70vh;
+  height: 100%;
+  border-radius: 10px;
+  margin: 10px; }
+  .user-friends img {
+    width: 2rem;
+    height: 2rem;
+    vertical-align: bottom;
+    border-radius: 50%; }
+  .user-friends h4 {
+    color: white;
+    text-shadow: 1px 1px 4px black;
+    margin: 5px 40% 15px;
+    font-size: 1.8rem; }
+  .user-friends a {
+    text-decoration: none;
+    color: antiquewhite;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px black; }
+  .user-friends a:hover {
+    text-decoration: underline; }
+  .user-friends #usersection-link-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; }
+
+.feed-posts {
+  width: 70%;
+  padding: 10px; }
 
 .like {
   color: red; }
+
+#navbar {
+  width: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  overflow: hidden; }
+
+@media screen and (max-width: 930px) {
+  .user-friends {
+    width: 100%; }
+  .feed-posts {
+    width: 100%; }
+  .friends-hide {
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0; }
+  #navbar {
+    height: auto;
+    width: 100%;
+    border-radius: 10px;
+    font-size: 30px;
+    padding: 5px 0;
+    margin-top: 10px;
+    background-color: #edc794;
+    color: white; }
+    #navbar ul {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: center; }
+      #navbar ul li {
+        display: inline-block;
+        margin-left: 10px;
+        vertical-align: bottom; }
+      #navbar ul li:hover {
+        color: #d39544; }
+  .hideposts {
+    height: 0;
+    width: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden; } }

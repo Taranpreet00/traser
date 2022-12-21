@@ -3,6 +3,32 @@ const Chat = require('../models/chat');
 const Friendship = require('../models/friendships');
 const Message = require('../models/message');
 
+exports.deleteMessage = async function(req, res){
+    let currentMessage = await Message.findById(req.params.id);
+    if(!currentMessage){
+        return res.status(401).json({
+            message: 'Message doesnot exist'
+        });
+    }
+    if(req.user.id != currentMessage.from_user.toString()){
+        return res.status(401).json({
+            message: 'Unauthorised'
+        });
+    }
+    let currentchat = await Chat.findOneAndUpdate({
+        $or: [
+            {user1: currentMessage.from_user, user2: currentMessage.to_user}, 
+            {user2: currentMessage.from_user, user1: currentMessage.to_user}
+        ] ,
+    }, {
+        $pull: {messages: req.params.id}
+    });
+    currentMessage.remove();
+    return res.status(200).json({
+        message: 'Message Deleted'
+    });
+}
+
 exports.newMessage = async function(req, res){
     console.log(req.body);
     const user2 = await User.findById(req.body.to_user_id);

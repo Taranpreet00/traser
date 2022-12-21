@@ -5,11 +5,17 @@ footer {
   font-family: sans-serif; }
   footer h3 {
     margin-left: 5px; }
+    @media screen and (max-width: 550px) {
+      footer h3 {
+        font-size: 0.8rem; } }
   footer #links {
     display: flex;
     flex-direction: column;
     font-size: 1.2rem;
     margin: 1rem; }
+    @media screen and (max-width: 550px) {
+      footer #links {
+        font-size: 1rem; } }
     footer #links a {
       text-decoration: none;
       color: white; }
