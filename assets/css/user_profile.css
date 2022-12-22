@@ -32,3 +32,8 @@ body {
         body #user-details #user-details-text #update-buttons a:hover {
           background-color: #efa84b;
           color: white; }
+    @media screen and (max-width: 550px) {
+      body #user-details #user-details-text p {
+        font-size: 1.2rem; }
+      body #user-details #user-details-text #update-buttons a {
+        font-size: 1rem; } }

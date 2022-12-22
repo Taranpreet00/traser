@@ -105,4 +105,20 @@
             text-decoration: underline;
         }
     }
+
+    @media screen and (max-width: 750px){
+        flex-direction: column;
+        #requests{
+            height: 40vh;
+            width: 90%;
+            padding: 5px;
+            ul{
+                padding: 0;
+            }
+        }
+        #all-users{
+            height: 40vh;
+            width: 90%;
+        }
+    }
 }

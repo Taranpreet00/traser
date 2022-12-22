@@ -8,7 +8,8 @@
   border: 10px solid #edc794;
   box-shadow: 0px 0px 3px 1px black;
   background-color: white;
-  border-radius: 20px; }
+  border-radius: 20px;
+  transition: 0.5s ease-in-out; }
   .user-chat-box #chat-message-list {
     list-style-type: none;
     padding: 10px;

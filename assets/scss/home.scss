@@ -10,8 +10,8 @@
 
     #feed-posts{
         border-radius: 10px;
-        margin: 10px;
         background-color: antiquewhite;
+        transition: 0.2s ease-in-out;
 
         #post-picture-label{
             text-align: center;
@@ -103,6 +103,7 @@
     height: 100%;
     border-radius: 10px;
     margin: 10px;
+    transition: 0.2s ease-in-out;
 
     img{
         width: 2rem;
@@ -140,6 +141,7 @@
 .feed-posts{
     width: 70%;
     padding: 10px;
+    margin: 10px;
 }
 
 .like{
@@ -196,7 +198,6 @@
         }
     }
     .hideposts{
-        height: 0;
         width: 0;
         padding: 0;
         margin: 0;

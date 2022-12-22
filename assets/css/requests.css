@@ -75,3 +75,15 @@
       text-shadow: 1px 1px 4px black; }
     #page-body #all-users a:hover {
       text-decoration: underline; }
+  @media screen and (max-width: 750px) {
+    #page-body {
+      flex-direction: column; }
+      #page-body #requests {
+        height: 40vh;
+        width: 90%;
+        padding: 5px; }
+        #page-body #requests ul {
+          padding: 0; }
+      #page-body #all-users {
+        height: 40vh;
+        width: 90%; } }
