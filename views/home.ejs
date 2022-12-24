@@ -1,5 +1,5 @@
-<link rel="stylesheet" type="text/css" href="/css/home.css">
-<link rel="stylesheet" type="text/css" href="/css/chatbox.css">
+<link rel="stylesheet" type="text/css" href="<%= assetPath('css/home.css') %>">
+<link rel="stylesheet" type="text/css" href="<%= assetPath('css/chatbox.css') %>">
 <div id="navbar">
     <ul>
         <li>
@@ -44,7 +44,7 @@
                     <% if(u.avatar){ %>
                         <img id="avatar" src="<%= u.avatar %>">
                     <% } else { %>
-                        <img id="avatar" src="/images/avatar.png">
+                        <img id="avatar" src="<%= assetPath('images/avatar.png') %>">
                     <%}%>
                     <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
                 </p>
@@ -66,7 +66,7 @@
                     <% if(u.avatar){ %>
                         <img id="avatar" src="<%= u.avatar %>">
                     <% } else { %>
-                        <img id="avatar" src="/images/avatar.png">
+                        <img id="avatar" src="<%= assetPath('images/avatar.png') %>">
                     <%}%>
                     <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
                 </p>
@@ -77,9 +77,9 @@
     
     <%- include('_chatbox.ejs'); %>
 </div>
-<script src="/js/home_posts.js"></script>
-<script src="/js/home_comments.js"></script>
-<script src="/js/home_likes_toggle.js"></script>
+<script src="<%= assetPath('js/home_posts.js') %>"></script>
+<script src="<%= assetPath('js/home_comments.js') %>"></script>
+<script src="<%= assetPath('js/home_likes_toggle.js') %>"></script>
 <script>
     $('.toggle-like').each(function(){
         let self = this;
@@ -88,10 +88,10 @@
 </script>
 <script src="https://kit.fontawesome.com/00f7b763b3.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"></script>
-<script src="/js/chat_engine.js"></script>
+<script src="<%= assetPath('js/chat_engine.js') %>"></script>
 <% if(locals.user) {%>
     <script>
         new ChatEngine('user-chat-box', '<%= locals.user.email %>');
     </script>
 <%}%>
-<script src="/js/home.js"></script>
+<script src="<%= assetPath('js/home.js') %>"></script>

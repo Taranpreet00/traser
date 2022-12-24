@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="/css/chatpage.css">
+<link rel="stylesheet" type="text/css" href="<%= assetPath('css/chatpage.css') %>">
 
 <section id="page-body">
     <section id="friends-list">
@@ -13,7 +13,7 @@
                 <% if(u.avatar){ %>
                     <img id="avatar" src="<%= u.avatar %>">
                 <% } else { %>
-                    <img id="avatar" src="/images/avatar.png">
+                    <img id="avatar" src="<%= assetPath('images/avatar.png') %>">
                 <%}%>
                 <a class="friends" href="<%= u.id %>"><%= u.name %></a>
             </p>
@@ -26,4 +26,4 @@
 
 <script src="https://kit.fontawesome.com/00f7b763b3.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"></script>
-<script src="/js/chat_page.js"></script>
+<script src="<%= assetPath('js/chat_page.js') %>"></script>

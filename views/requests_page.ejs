@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="/css/requests.css">
+<link rel="stylesheet" type="text/css" href="<%= assetPath('css/requests.css') %>">
 <div id="page-body">
     <div id="requests">
         <h4>Requests</h4>
@@ -11,7 +11,7 @@
                     <% if(request.from_user.avatar){ %>
                         <img id="avatar" src="<%= request.from_user.avatar %>">
                     <% } else { %>
-                        <img id="avatar" src="/images/avatar.png">
+                        <img id="avatar" src="<%= assetPath('images/avatar.png') %>">
                     <%}%>
                     <a class="request-user-id" href="/users/profile/<%= request.from_user.id%>"><%= request.from_user.name %></a>
                     <a href="/requests/confirm-request/<%= request.id %>" class="confirm-button">Confirm</a>
@@ -27,7 +27,7 @@
                     <% if(u.avatar){ %>
                         <img id="avatar" src="<%= u.avatar %>">
                     <% } else { %>
-                        <img id="avatar" src="/images/avatar.png">
+                        <img id="avatar" src="<%= assetPath('images/avatar.png') %>">
                     <%}%>
                     <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
                 </p>

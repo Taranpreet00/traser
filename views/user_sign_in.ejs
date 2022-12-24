@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="/css/signin.css">
+<link rel="stylesheet" type="text/css" href="<%= assetPath('css/signin.css') %>">
 
 <form action="/users/signin/create-session" method="post">
     <h1>Signin</h1>
@@ -11,7 +11,7 @@
     <p id="other-login">
         Or You can Login with: 
         <br>
-        <a href="/users/auth/google"><img src="/images/Google_logo.png" alt="Google Signin/Signup"></a>
+        <a href="/users/auth/google"><img src="<%= assetPath('images/Google_logo.png') %>" alt="Google Signin/Signup"></a>
     </p>
     <p><a href="/users/forgetpassword">forget password?</a></p>
 </form>

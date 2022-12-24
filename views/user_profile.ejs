@@ -1,11 +1,11 @@
-<link rel="stylesheet" type="text/css" href="/css/user_profile.css">
+<link rel="stylesheet" type="text/css" href="<%= assetPath('css/user_profile.css') %>">
 
 <div id="user-details">
     <section>
         <% if(profile_user.avatar){ %>
             <img id="avatar" src="<%= profile_user.avatar %>" alt="<%= profile_user.name %>">
         <% } else { %>
-            <img id="avatar" src="/images/avatar.png" alt="<%= profile_user.name %>">
+            <img id="avatar" src="<%= assetPath('images/avatar.png') %>" alt="<%= profile_user.name %>">
         <%}%>
     </section>
 
